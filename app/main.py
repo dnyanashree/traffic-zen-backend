@@ -17,6 +17,9 @@ app = FastAPI(lifespan=lifespan)
 app.include_router(users.router)
 app.include_router(security_routes.router)
 
+@app.get("/")
+async def root():
+    return {"message": "Welcome to the Traffic-Zen application!"}
 
 if __name__ == "__main__":
     

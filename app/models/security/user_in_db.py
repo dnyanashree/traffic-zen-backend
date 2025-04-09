@@ -1,6 +1,7 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 from models.security.user_login import UserLogin
 import uuid
+from datetime import datetime
 
 class UserInDB(UserLogin):   
     userid: uuid.UUID = Field(default=uuid.uuid4())
@@ -10,15 +11,5 @@ class UserInDB(UserLogin):
     last_failed_login: datetime | None = None
     is_account_locked: bool | None = False
 
-
-
-from pydantic import BaseModel, Field
-import uuid
-from datetime import datetime
-
-class UserLogin(BaseModel):
-    userid: uuid.UUID = Field(default=uuid.uuid4())
-    email: str
-    password: str
 
 
